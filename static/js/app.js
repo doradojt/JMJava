@@ -49,6 +49,7 @@ data.forEach(function(alienLoop) {
 //selects the filter button
 var filter = d3.select("#filter-btn");
 
+
 //running a function to filter results by date
 filter.on("click", function() {
 //prevents a refresh
@@ -64,15 +65,37 @@ filter.on("click", function() {
     var filteredData = tableData.filter(data=> data.datetime === inputValue);
     console.log(filteredData);
 
-    //var newDates = filteredData.map(data => data.datetime);
+    var newDates = filteredData.map(data => data.datetime);
+    var city = filteredData.map(data=>data.city);
+    var state = filteredData.map(data => data.state);
+    var country = filteredData.map(data => data.country);
+    var shape = filteredData.map(data=>data.shape);
     var durationMin = filteredData.map(data => data.durationMinutes);
+//made variables and then appended to a list, wasnt right
 
-    var mean = math.mean(durationMin);
-    var count = math.sum(durationMin);
 
-    d3.select(".summary")
-        .append("li").text(`Mean: ${mean}`)
-        .append("li").text(`Count: ${sum}`);
+    //d3.select("h1>span").text(durationMin);
+    //d3.select("#ufo-table-two")
+        //.append(".table-head-one").text(`Date:${newDates}`)
+        //.append(".table-head-two").text(`City: ${city}`)
+        //.append(".table-head-three").text(`State: ${state}`)
+        //.append(".table-head-four").text(`Country:${country}`)
+        //.append(".table-head-five").text(`Shape:${shape}`)
+        //.append(".table-head-six").text(`Minutes: ${durationMin}`);
+
+    filteredData.forEach(function(alienLoopTwo) {
+        console.log(alienLoopTwo);
+        var row = tbody.append('tr');
+    
+        Object.entries(alienLoopTwo).forEach(function([key, value]) {
+            console.log(alienLoopTwo);
+            var cell = row.append('td');
+            cell.text(value);
+        });
+    });
 });
+
+
+
 ///appending the list to a summary but not sure if we need to do this, makes sense to
 ///tried playing with appending stats but the math didnt work
