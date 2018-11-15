@@ -1,3 +1,5 @@
 I need to find out how to remove the items that are appended
 I need to understand how to collapse the general list and get the filtered only
 are there functions that remove and refilter?
+
+-New Question: the shape search is the only one working, why?
