@@ -51,7 +51,7 @@ var filter = d3.select("#filter-btn");
 
 
 //running a function to filter results by date
-filter.on("click", function(datesearch) {
+filter.on("click", function() {
 //prevents a refresh
     d3.event.preventDefault();
 //select the filter element and get the raw HTML node
@@ -93,24 +93,24 @@ filter.on("click", function(datesearch) {
             cell.text(value);
         });
     });
-});
+//});
 
 //filter on city
-filter.on("click", function(citysearch) {
+//filter.on("click", function() {
 //prevents a refresh
-    d3.event.preventDefault();
+    //d3.event.preventDefault();
 //select the filter element and get the raw HTML node
-    var inputElement = d3.select("#cityinput");
+    var inputElementTwo = d3.select("#cityinput");
 //get the value property of the input element
-    var inputValue = inputElement.property("value");
+    var inputValueTwo = inputElementTwo.property("value");
 
-    console.log(inputValue);
-    console.log(tableData);
+    console.log(inputValueTwo);
+    //console.log(tableData);
 
-    var filteredData = tableData.filter(data=> data.city === inputValue);
-    console.log(filteredData);
+    var filteredDatatwo = tableData.filter(data=> data.city === inputValueTwo);
+    console.log(filteredDatatwo);
 
-    filteredData.forEach(function(LoopThree) {
+    filteredDatatwo.forEach(function(LoopThree) {
         console.log(LoopThree);
         var row = tbody.append('tr');
     
@@ -120,23 +120,24 @@ filter.on("click", function(citysearch) {
             cell.text(value);
         });
     });
-});
-//filter on state
-filter.on("click", function(statesearch) {
-//prevents a refresh
-    d3.event.preventDefault();
-//select the filter element and get the raw HTML node
-    var inputElement = d3.select("#stateinput");
-//get the value property of the input element
-    var inputValue = inputElement.property("value");
+//});
 
-    console.log(inputValue);
+//filter on state
+//filter.on("click", function() {
+//prevents a refresh
+    //d3.event.preventDefault();
+//select the filter element and get the raw HTML node
+    var inputElementThree = d3.select("#stateinput");
+//get the value property of the input element
+    var inputValueThree = inputElementThree.property("value");
+
+    console.log(inputValueThree);
     console.log(tableData);
 
-    var filteredData = tableData.filter(data=> data.state === inputValue);
-    console.log(filteredData);
+    var filteredDatathree = tableData.filter(data=> data.state === inputValueThree);
+    console.log(filteredDatathree);
 
-    filteredData.forEach(function(LoopFour) {
+    filteredDatathree.forEach(function(LoopFour) {
         console.log(LoopFour);
         var row = tbody.append('tr');
     
@@ -146,23 +147,23 @@ filter.on("click", function(statesearch) {
             cell.text(value);
         });
     });
-});
-//filter on Country
-filter.on("click", function(countrysearch) {
-//prevents a refresh
-    d3.event.preventDefault();
-//select the filter element and get the raw HTML node
-    var inputElement = d3.select("#countryinput");
-//get the value property of the input element
-    var inputValue = inputElement.property("value");
+//});
 
-    console.log(inputValue);
+//filter.on("click", function() {
+//prevents a refresh
+    //d3.event.preventDefault();
+//select the filter element and get the raw HTML node
+    var inputElementFour = d3.select("#countryinput");
+//get the value property of the input element
+    var inputValueFour = inputElementFour.property("value");
+
+    console.log(inputValueFour);
     console.log(tableData);
 
-    var filteredData = tableData.filter(data=> data.country === inputValue);
-    console.log(filteredData);
+    var filteredDataFour = tableData.filter(data=> data.country === inputValueFour);
+    console.log(filteredDataFour);
 
-    filteredData.forEach(function(LoopFive) {
+    filteredDataFour.forEach(function(LoopFive) {
         console.log(LoopFive);
         var row = tbody.append('tr');
     
@@ -172,23 +173,23 @@ filter.on("click", function(countrysearch) {
             cell.text(value);
         });
     });
-});
+//});
 
-filter.on("click", function(shapesearch) {
+//filter.on("click", function() {
 //prevents a refresh
-    d3.event.preventDefault();
+    //d3.event.preventDefault();
 //select the filter element and get the raw HTML node
-    var inputElement = d3.select("#shapeinput");
+    var inputElementFive = d3.select("#shapeinput");
 //get the value property of the input element
-    var inputValue = inputElement.property("value");
+    var inputValueFive = inputElementFive.property("value");
 
-    console.log(inputValue);
-    console.log(tableData);
+    console.log(inputValueFive);
+    //console.log(tableData);
 
-    var filteredData = tableData.filter(data=> data.shape === inputValue);
-    console.log(filteredData);
+    var filteredDataFive = tableData.filter(data=> data.shape === inputValueFive);
+    console.log(filteredDataFive);
 
-    filteredData.forEach(function(LoopSix) {
+    filteredDataFive.forEach(function(LoopSix) {
         console.log(LoopSix);
         var row = tbody.append('tr');
     
@@ -199,4 +200,4 @@ filter.on("click", function(shapesearch) {
         });
     });
 });
-//not sure why the shape is the only one working, must be linked to being the last one in the search
+//as of 11/15/2018 6:21 pm, I made it all one function and it seems to work, questions would be does this need to be a filter that can filter everything? collapse down results? still dont know how to do that in a simple way?
