@@ -3,7 +3,31 @@ var tableData = data;
 
 var tbody = d3.select('tbody');
 
-// YOUR CODE HERE!
+var showall = d3.select("#showall-btn");
+
+showall.on("click", function() {
+    
+    d3.event.preventDefault();
+    
+    data.forEach(function(alienLoop) {
+        var row = tbody.append('tr');
+    
+        Object.entries(alienLoop).forEach(function([key, value]) {
+            //console.log(alienLoop);
+            var cell = row.append('td');
+            cell.text(value);
+        })
+    })
+});
+
+var clearall = d3.select("#clear-btn");
+
+clearall.on("click", function() {
+    d3.select("#table-area").clearall;   
+});
+
+//looking for a way to clear the table 11.16.2018, right now its refreshing, not clearing
+
 //console.log(data);
 
 //this creates a loop that will go through data and log
@@ -36,16 +60,16 @@ var tbody = d3.select('tbody');
 //});
 
 //using d3 to update each cells text with the data values
-data.forEach(function(alienLoop) {
-    console.log(alienLoop);
-    var row = tbody.append('tr');
+//data.forEach(function(alienLoop) {
+    //console.log(alienLoop);
+    //var row = tbody.append('tr');
 
-    Object.entries(alienLoop).forEach(function([key, value]) {
-        console.log(alienLoop);
-        var cell = row.append('td');
-        cell.text(value);
-    });
-});
+    //Object.entries(alienLoop).forEach(function([key, value]) {
+        //console.log(alienLoop);
+        //var cell = row.append('td');
+        //cell.text(value);
+    //});
+//});
 //selects the filter button
 var filter = d3.select("#filter-btn");
 
@@ -59,18 +83,20 @@ filter.on("click", function() {
 //get the value property of the input element
     var inputValue = inputElement.property("value");
 
-    console.log(inputValue);
-    console.log(tableData);
+    //console.log(inputValue);
+    //console.log(tableData);
+
+    d3.select("#dateinput").node().value = "";
 
     var filteredData = tableData.filter(data=> data.datetime === inputValue);
     console.log(filteredData);
 
-    var newDates = filteredData.map(data => data.datetime);
-    var city = filteredData.map(data=>data.city);
-    var state = filteredData.map(data => data.state);
-    var country = filteredData.map(data => data.country);
-    var shape = filteredData.map(data=>data.shape);
-    var durationMin = filteredData.map(data => data.durationMinutes);
+    //var newDates = filteredData.map(data => data.datetime);
+    //var city = filteredData.map(data=>data.city);
+    //var state = filteredData.map(data => data.state);
+    //var country = filteredData.map(data => data.country);
+    //var shape = filteredData.map(data=>data.shape);
+    //var durationMin = filteredData.map(data => data.durationMinutes);
 //made variables and then appended to a list, wasnt right
 
 
@@ -84,11 +110,11 @@ filter.on("click", function() {
         //.append(".table-head-six").text(`Minutes: ${durationMin}`);
 
     filteredData.forEach(function(LoopTwo) {
-        console.log(LoopTwo);
+        //console.log(LoopTwo);
         var row = tbody.append('tr');
     
         Object.entries(LoopTwo).forEach(function([key, value]) {
-            console.log(LoopTwo);
+            //console.log(LoopTwo);
             var cell = row.append('td');
             cell.text(value);
         });
@@ -104,18 +130,19 @@ filter.on("click", function() {
 //get the value property of the input element
     var inputValueTwo = inputElementTwo.property("value");
 
-    console.log(inputValueTwo);
+    //console.log(inputValueTwo);
     //console.log(tableData);
+    d3.select("#cityinput").node().value = "";
 
     var filteredDatatwo = tableData.filter(data=> data.city === inputValueTwo);
-    console.log(filteredDatatwo);
+    //console.log(filteredDatatwo);
 
     filteredDatatwo.forEach(function(LoopThree) {
-        console.log(LoopThree);
+        //console.log(LoopThree);
         var row = tbody.append('tr');
     
         Object.entries(LoopThree).forEach(function([key, value]) {
-            console.log(LoopThree);
+            //console.log(LoopThree);
             var cell = row.append('td');
             cell.text(value);
         });
@@ -131,18 +158,19 @@ filter.on("click", function() {
 //get the value property of the input element
     var inputValueThree = inputElementThree.property("value");
 
-    console.log(inputValueThree);
-    console.log(tableData);
+    //console.log(inputValueThree);
+    //console.log(tableData);
+    d3.select("#stateinput").node().value = "";
 
     var filteredDatathree = tableData.filter(data=> data.state === inputValueThree);
-    console.log(filteredDatathree);
+    //console.log(filteredDatathree);
 
     filteredDatathree.forEach(function(LoopFour) {
-        console.log(LoopFour);
+        //console.log(LoopFour);
         var row = tbody.append('tr');
     
         Object.entries(LoopFour).forEach(function([key, value]) {
-            console.log(LoopFour);
+            //console.log(LoopFour);
             var cell = row.append('td');
             cell.text(value);
         });
@@ -157,18 +185,19 @@ filter.on("click", function() {
 //get the value property of the input element
     var inputValueFour = inputElementFour.property("value");
 
-    console.log(inputValueFour);
-    console.log(tableData);
+    //console.log(inputValueFour);
+    //console.log(tableData);
+    d3.select("#countryinput").node().value = "";
 
     var filteredDataFour = tableData.filter(data=> data.country === inputValueFour);
-    console.log(filteredDataFour);
+    //console.log(filteredDataFour);
 
     filteredDataFour.forEach(function(LoopFive) {
-        console.log(LoopFive);
+        //console.log(LoopFive);
         var row = tbody.append('tr');
     
         Object.entries(LoopFive).forEach(function([key, value]) {
-            console.log(LoopFive);
+            //console.log(LoopFive);
             var cell = row.append('td');
             cell.text(value);
         });
@@ -183,18 +212,19 @@ filter.on("click", function() {
 //get the value property of the input element
     var inputValueFive = inputElementFive.property("value");
 
-    console.log(inputValueFive);
+    //console.log(inputValueFive);
     //console.log(tableData);
+    d3.select("#shapeinput").node().value = "";
 
     var filteredDataFive = tableData.filter(data=> data.shape === inputValueFive);
-    console.log(filteredDataFive);
+    //console.log(filteredDataFive);
 
     filteredDataFive.forEach(function(LoopSix) {
-        console.log(LoopSix);
+        //console.log(LoopSix);
         var row = tbody.append('tr');
     
         Object.entries(LoopSix).forEach(function([key, value]) {
-            console.log(LoopSix);
+            //console.log(LoopSix);
             var cell = row.append('td');
             cell.text(value);
         });
