@@ -23,10 +23,18 @@ showall.on("click", function() {
 var clearall = d3.select("#clear-btn");
 
 clearall.on("click", function() {
-    d3.select("#table-area").clearall;   
+    var elements = document.getElementsByTagName("#ufo-table");
+    for (var i = 0; i < elements.length; i++) {
+        if(elements[i].type == "text") {
+            elements[i].value = "";
+        }
+    }
+    //was a backup way to clear the table if above didn't work, refreshed page
+    //d3.event.preventDefault();
+    //d3.select("#ufo-table").clearall;   
 });
 
-//looking for a way to clear the table 11.16.2018, right now its refreshing, not clearing
+
 
 //selects the filter button
 var filter = d3.select("#filter-btn");
@@ -161,49 +169,57 @@ enter.on("click", function() {
     var stateInput = d3.select("#stateentry");
     var countryInput = d3.select("#countryentry");
     var shapeInput = d3.select("#shapeentry");
+    var durationInput = d3.select("#durationentry");
+    var commentInput = d3.select("#commententry");
 
     var dateValue = dateInput.property("value");
     var cityValue = cityInput.property("value");
     var stateValue = stateInput.property("value");
     var countryValue = countryInput.property("value");
     var shapeValue = shapeInput.property("value");
+    var durationValue = durationInput.property("value");
+    var commentValue = commentInput.property("value");
 
     console.log(dateValue);
     console.log(cityValue);
     console.log(stateValue);
     console.log(countryValue);
     console.log(shapeValue);
+    console.log(durationValue);
+    console.log(commentValue);
 
     d3.select("#dateentry").node().value = "";
     d3.select("#cityentry").node().value = "";
     d3.select("#stateentry").node().value = "";
     d3.select("#countryentry").node().value = "";
     d3.select("#shapeentry").node().value = "";
+    d3.select("#durationentry").node().value ="";
+    d3.select("#commententry").node().value ="";
 
     //trying to push the variables into an object to loop through
     var inputs =[];
-    inputs.push({datetime: dateValue});
-    inputs.push({city: cityValue});
-    inputs.push({state: stateValue});
-    inputs.push({country: countryValue});
-    inputs.push({shape: shapeValue});
+    inputs.push({"datetime": dateValue});
+    inputs.push({"city": cityValue});
+    inputs.push({"state": stateValue});
+    inputs.push({"country": countryValue});
+    inputs.push({"shape": shapeValue});
+    inputs.push({"duration": durationValue});
+    inputs.push({"comments": commentValue});
 
     console.log(inputs);
 
     data.push(inputs);
     //pushes the inputs to the old data list, tries to
     //loops through and assigns the table
-    inputs.forEach(function(alienLoop) {
+    // inputs.forEach(function(inputs) {
         
         var row = tbody.append('tr');
         
-        Object.entries(alienLoop).forEach(function([key, value]) {
-            
+        Object.entries(inputs).forEach(function([key, value]) {
+            console.log("Key: " + key);
+            console.log("Value: " + value);
             var cell = row.append('td');
-            cell.text(value);
+            cell.text(Object.values(value)[0]);
         });
-    });
+    // });
 });
-
-//11.17.2018, find out why its appending down, not across
-//also, does it need to save to the data, if so append to the original data list?
