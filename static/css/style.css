@@ -58,14 +58,27 @@ body {
 }
 .panel-heading{
   text-align: center;
+  font-weight: bold;
+}
+
+.sub-heading{
+  text-align: center;
+  font-style: italic; 
+  font-size: 14px;
+  color: coral;
 }
 
 .filters .panel-body {
   padding: 0;
   text-align: center;
+  font-weight: bold;
 }
 .filters {
   margin-top: 10px;
+}
+
+.btn-default {
+  font-weight:bold;
 }
 
 select {

@@ -35,127 +35,136 @@ clearall.on("click", function() {
 });
 
 
-
-//selects the filter button
+// //selects the filter button
 var filter = d3.select("#filter-btn");
 
+ //running a function to filter results by date
+ filter.on("click", function() {
+// //prevents a refresh
+     d3.event.preventDefault();
+// //clears previous filter
+     tbody.text("")
+// //select the filter element and get the raw HTML node
+     var inputElement = d3.select("#dateinput");
+// //get the value property of the input element
+     var inputValue = inputElement.property("value");
 
-//running a function to filter results by date
-filter.on("click", function() {
-//prevents a refresh
-    d3.event.preventDefault();
-//select the filter element and get the raw HTML node
-    var inputElement = d3.select("#dateinput");
-//get the value property of the input element
-    var inputValue = inputElement.property("value");
+//     //console.log(inputValue);
+//     //console.log(tableData);
 
-    //console.log(inputValue);
-    //console.log(tableData);
+     d3.select("#dateinput").node().value = "";
 
-    d3.select("#dateinput").node().value = "";
+     var filteredData = tableData.filter(data=> data.datetime === inputValue);
+//     console.log(filteredData);
 
-    var filteredData = tableData.filter(data=> data.datetime === inputValue);
-    console.log(filteredData);
-
-    filteredData.forEach(function(LoopTwo) {
-        //console.log(LoopTwo);
-        var row = tbody.append('tr');
+     filteredData.forEach(function(LoopTwo) {
+//         //console.log(LoopTwo);
+         var row = tbody.append('tr');
     
-        Object.entries(LoopTwo).forEach(function([key, value]) {
-            //console.log(LoopTwo);
-            var cell = row.append('td');
-            cell.text(value);
-        });
-    });
+         Object.entries(LoopTwo).forEach(function([key, value]) {
+//             //console.log(LoopTwo);
+             var cell = row.append('td');
+             cell.text(value);
+         });
+     });
 
-    var inputElementTwo = d3.select("#cityinput");
-//get the value property of the input element
-    var inputValueTwo = inputElementTwo.property("value");
+     var inputElementTwo = d3.select("#cityinput");
+ //get the value property of the input element
+     var inputValueTwo = inputElementTwo.property("value");
 
-    //console.log(inputValueTwo);
-    //console.log(tableData);
-    d3.select("#cityinput").node().value = "";
+//     //console.log(inputValueTwo);
+//     //console.log(tableData);
+     d3.select("#cityinput").node().value = "";
 
-    var filteredDatatwo = tableData.filter(data=> data.city === inputValueTwo);
-    //console.log(filteredDatatwo);
+     var filteredDatatwo = tableData.filter(data=> data.city === inputValueTwo);
+//     //console.log(filteredDatatwo);
 
-    filteredDatatwo.forEach(function(LoopThree) {
-        //console.log(LoopThree);
-        var row = tbody.append('tr');
+     filteredDatatwo.forEach(function(LoopThree) {
+//         //console.log(LoopThree);
+         var row = tbody.append('tr');
     
-        Object.entries(LoopThree).forEach(function([key, value]) {
-            //console.log(LoopThree);
-            var cell = row.append('td');
-            cell.text(value);
-        });
-    });
+         Object.entries(LoopThree).forEach(function([key, value]) {
+//             //console.log(LoopThree);
+             var cell = row.append('td');
+             cell.text(value);
+         });
+     });
 
-    var inputElementThree = d3.select("#stateinput");
+     var inputElementThree = d3.select("#stateinput");
 
-    var inputValueThree = inputElementThree.property("value");
+     var inputValueThree = inputElementThree.property("value");
 
-    //console.log(inputValueThree);
-    //console.log(tableData);
-    d3.select("#stateinput").node().value = "";
+//     //console.log(inputValueThree);
+//     //console.log(tableData);
+     d3.select("#stateinput").node().value = "";
 
-    var filteredDatathree = tableData.filter(data=> data.state === inputValueThree);
-    //console.log(filteredDatathree);
+     var filteredDatathree = tableData.filter(data=> data.state === inputValueThree);
+//     //console.log(filteredDatathree);
 
-    filteredDatathree.forEach(function(LoopFour) {
-        //console.log(LoopFour);
-        var row = tbody.append('tr');
+     filteredDatathree.forEach(function(LoopFour) {
+//         //console.log(LoopFour);
+         var row = tbody.append('tr');
     
-        Object.entries(LoopFour).forEach(function([key, value]) {
-            //console.log(LoopFour);
-            var cell = row.append('td');
-            cell.text(value);
-        });
-    });
+         Object.entries(LoopFour).forEach(function([key, value]) {
+             //console.log(LoopFour);
+             var cell = row.append('td');
+             cell.text(value);
+         });
+     });
 
-    var inputElementFour = d3.select("#countryinput");
+     var inputElementFour = d3.select("#countryinput");
 
-    var inputValueFour = inputElementFour.property("value");
+     var inputValueFour = inputElementFour.property("value");
 
-    //console.log(inputValueFour);
-    //console.log(tableData);
-    d3.select("#countryinput").node().value = "";
+//     //console.log(inputValueFour);
+//     //console.log(tableData);
+     d3.select("#countryinput").node().value = "";
 
-    var filteredDataFour = tableData.filter(data=> data.country === inputValueFour);
-    //console.log(filteredDataFour);
+     var filteredDataFour = tableData.filter(data=> data.country === inputValueFour);
+//     //console.log(filteredDataFour);
 
-    filteredDataFour.forEach(function(LoopFive) {
-        //console.log(LoopFive);
-        var row = tbody.append('tr');
+     filteredDataFour.forEach(function(LoopFive) {
+//         //console.log(LoopFive);
+         var row = tbody.append('tr');
     
-        Object.entries(LoopFive).forEach(function([key, value]) {
-            //console.log(LoopFive);
-            var cell = row.append('td');
-            cell.text(value);
-        });
-    });
+         Object.entries(LoopFive).forEach(function([key, value]) {
+//             //console.log(LoopFive);
+             var cell = row.append('td');
+             cell.text(value);
+         });
+     });
 
-    var inputElementFive = d3.select("#shapeinput");
+     var inputElementFive = d3.select("#shapeinput");
 
-    var inputValueFive = inputElementFive.property("value");
+     var inputValueFive = inputElementFive.property("value");
 
-    //console.log(inputValueFive);
-    //console.log(tableData);
-    d3.select("#shapeinput").node().value = "";
+//     //console.log(inputValueFive);
+//     //console.log(tableData);
+     d3.select("#shapeinput").node().value = "";
 
-    var filteredDataFive = tableData.filter(data=> data.shape === inputValueFive);
-    //console.log(filteredDataFive);
+     var filteredDataFive = tableData.filter(data=> data.shape === inputValueFive);
+//     //console.log(filteredDataFive);
 
-    filteredDataFive.forEach(function(LoopSix) {
-        //console.log(LoopSix);
-        var row = tbody.append('tr');
+     filteredDataFive.forEach(function(LoopSix) {
+//         //console.log(LoopSix);
+         var row = tbody.append('tr');
     
-        Object.entries(LoopSix).forEach(function([key, value]) {
-            //console.log(LoopSix);
-            var cell = row.append('td');
-            cell.text(value);
-        });
-    });
-});
+         Object.entries(LoopSix).forEach(function([key, value]) {
+//             //console.log(LoopSix);
+             var cell = row.append('td');
+             cell.text(value);
+         });
+     });
+//     //attempt at multi-filters
+     var multiFilterOne = tableData.filter(data => data.datetime === inputValue && data.shape === inputValueFive && data.city === inputValueTwo && data.country === inputValueFour && data.state === inputValueThree);
+     multiFilterOne.forEach(function(LoopSeven) {
+         var row = tbody.append('tr');
+         Object.entries(LoopSeven).forEach(function([key, value]) {
+             var cell = row.append('td');
+             cell.text(value);
+         });
+     });
+ });
 
 //selects the enter button
 var enter = d3.select("#enter-btn");
