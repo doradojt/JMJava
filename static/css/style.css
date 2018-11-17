@@ -56,11 +56,14 @@ body {
 .ufo-form {
   margin-top: 50px;
 }
+.panel-heading{
+  text-align: center;
+}
 
 .filters .panel-body {
   padding: 0;
+  text-align: center;
 }
-
 .filters {
   margin-top: 10px;
 }
